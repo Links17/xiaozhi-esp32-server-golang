@@ -365,6 +365,7 @@ func (s *ChatSession) HandleListenDetect(msg *ClientMessage) error {
 					s.HandleWelcome()
 				}
 			} else {
+				s.clientState.Destroy()
 				//进行llm->tts聊天
 				if err := s.AddAsrResultToQueue(text); err != nil {
 					log.Errorf("开始对话失败: %v", err)
